@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-variant="B">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OfficeSupply Online - Kit Escritório Premium (Variante B)</title>
+    <link rel="stylesheet" href="style-control.css">
+    <link rel="stylesheet" href="style-variant.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>OfficeSupply Online</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Produtos</a></li>
+                    <li><a href="#">Promoções</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="product-detail">
+            <div class="product-image">
+                <img src="img001.jpeg" alt="Kit Escritório Premium">
+            </div>
+            <div class="product-info">
+                <h2 class="product-title">Kit Escritório Premium Clássico</h2>
+                <div class="rating" aria-label="Nota 4,8 de 5 estrelas">
+                    <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                    <strong>4,8</strong> <a href="#avaliacoes">(127 avaliações)</a>
+                </div>
+                <p class="product-category">Categoria: Kits Essenciais</p>
+                <div class="product-price">
+                    <span class="current-price">R$ 299,90</span>
+                    <p class="installments">ou <strong>10x de R$ 29,99</strong> sem juros no cartão</p>
+                    <p class="per-day">Menos de R$ 0,83 por dia ao longo de 1 ano de uso</p>
+                </div>
+                <p class="product-description">
+                    Um kit completo com itens essenciais de alta qualidade para o seu dia a dia no escritório. Inclui canetas, cadernos, post-its e organizadores. Perfeito para quem busca funcionalidade.
+                </p>
+                <button class="add-to-cart-btn" data-source="principal">Adicionar ao Carrinho</button>
+                <ul class="trust-badges">
+                    <li><strong>Frete grátis</strong> acima de R$ 199</li>
+                    <li><strong>30 dias</strong> para troca</li>
+                    <li><strong>12 meses</strong> de garantia</li>
+                    <li><strong>Compra segura</strong> com SSL</li>
+                </ul>
+                <div class="product-features">
+                    <h3>Características:</h3>
+                    <ul>
+                        <li>Canetas esferográficas de ponta fina</li>
+                        <li>Caderno capa dura A5</li>
+                        <li>Bloco de notas adesivas</li>
+                        <li>Organizador de mesa compacto</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-products">
+            <h2>Combine com o seu Kit</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="mouse.jpg" alt="Mouse Ergonômico Bluetooth">
+                    <h3>Mouse Ergonômico Bluetooth Silence</h3>
+                    <p class="card-tag">Complementa o seu kit</p>
+                    <p class="card-category">Categoria: Tecnologia Essencial</p>
+                    <p class="card-price">R$ 149,90</p>
+                    <button class="add-to-cart-btn-small">Ver Detalhes</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 OfficeSupply Online &ndash; Todos os direitos reservados.</p>
+    </footer>
+    <div class="sticky-buy" id="stickyBuy" aria-hidden="true">
+        <div><strong>R$ 299,90</strong><span>10x de R$ 29,99 sem juros</span></div>
+        <button class="add-to-cart-btn" data-source="barra-fixa">Adicionar ao Carrinho</button>
+    </div>
+    <script>
+    /* Barra fixa: aparece quando o botão principal sai da tela */
+    (function(){
+      var cta=document.querySelector('.product-info .add-to-cart-btn'),bar=document.getElementById('stickyBuy');
+      if(!cta||!bar||!('IntersectionObserver' in window))return;
+      new IntersectionObserver(function(e){bar.classList.toggle('show',!e[0].isIntersecting&&e[0].boundingClientRect.top<0);}).observe(cta);
+    })();
+    </script>
+    <script>
+    /* Rastreamento do teste A/B (idêntico nas duas versões) */
+    (function(){
+      var v=document.documentElement.getAttribute('data-variant');
+      window.dataLayer=window.dataLayer||[];
+      function t(e,p){var d=Object.assign({event:e,ab_test:'pdp_prova_de_valor',ab_variant:v},p||{});window.dataLayer.push(d);console.log('[AB]',d);}
+      t('ab_exposure');
+      document.querySelectorAll('.add-to-cart-btn').forEach(function(b){b.addEventListener('click',function(){t('add_to_cart',{item:'kit-premium-classico',value:299.9,source:b.getAttribute('data-source')||'principal'});});});
+      document.querySelectorAll('.add-to-cart-btn-small').forEach(function(b){b.addEventListener('click',function(){t('select_related',{item:'mouse-bluetooth-silence'});});});
+    })();
+    </script>
+</body>
+</html>
